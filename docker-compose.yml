@@ -1,0 +1,57 @@
+version: '3'
+
+services:
+  zookeeper:
+    image: wurstmeister/zookeeper
+    container_name: zookeeper
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+
+  kafka:
+    image: wurstmeister/kafka
+    container_name: kafka
+    ports:
+      - "9092:9092"
+    depends_on:
+      - zookeeper
+    environment:
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_LISTENERS: INTERNAL://0.0.0.0:9092
+      KAFKA_ADVERTISED_LISTENERS: INTERNAL://kafka:9092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: INTERNAL:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: INTERNAL
+
+  producer:
+    depends_on: 
+      - kafka
+    build: ./producer
+    container_name: producer
+    command: npm run start:producer
+    ports:
+      - "3333:3333"
+    volumes:
+      - .:/src/producer
+
+
+    # kafka-admin:
+  #   depends_on: 
+  #     - broker
+  #   build: ./kafka-admin
+  #   container_name: kafka_admin
+  #   command: npm run start
+  #   volumes:
+  #     - .:/src/kafka-admin  
+
+  # kafka-admin:
+  #   image: node:alpine
+  #   command: npm run start:kafka-admin
+  # consumer:
+  #   depends_on: producer
+  #   image: node:alpine
+  #   container_name: consumer
+  #   command: npm start:consumer
+  #   ports:
+  #     - "5000:5000"
+  #   volumes:
+  #     - .:/src/consumer  

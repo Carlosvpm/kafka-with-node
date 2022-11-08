@@ -1,0 +1,24 @@
+{
+  "name": "kafka",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start:all-devices":"nodemon producer/index.js nodemon consumer/index.js nodemon kafka-admin/index.js",
+    "start:producer": "nodemon producer/index.js",
+    "start:consumer": "nodemon consumer/index.js",
+    "start:kafka-admin": "nodemon kafka-admin/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.1",
+    "express": "^4.18.2",
+    "kafkajs": "^2.2.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
