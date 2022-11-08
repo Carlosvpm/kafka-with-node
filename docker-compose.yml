@@ -33,25 +33,14 @@ services:
     volumes:
       - .:/src/producer
 
-
-    # kafka-admin:
-  #   depends_on: 
-  #     - broker
-  #   build: ./kafka-admin
-  #   container_name: kafka_admin
-  #   command: npm run start
-  #   volumes:
-  #     - .:/src/kafka-admin  
-
-  # kafka-admin:
-  #   image: node:alpine
-  #   command: npm run start:kafka-admin
-  # consumer:
-  #   depends_on: producer
-  #   image: node:alpine
-  #   container_name: consumer
-  #   command: npm start:consumer
-  #   ports:
-  #     - "5000:5000"
-  #   volumes:
-  #     - .:/src/consumer  
+  consumer:
+    depends_on: 
+      - kafka
+      - producer
+    build: ./consumer
+    container_name: consumer
+    command: npm run start:consumer
+    ports:
+      - "4444:4444"
+    volumes:
+      - .:/src/consumer

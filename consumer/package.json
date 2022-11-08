@@ -1,13 +1,13 @@
 {
-  "name": "kafka-admin",
+  "name": "consumer",
   "version": "1.0.0",
+  "description": "",
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "nodemon index.js"
+    "start:consumer": "nodemon index.js"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
-  "description": ""
+  "license": "ISC"
 }
