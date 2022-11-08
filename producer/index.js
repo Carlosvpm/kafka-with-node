@@ -19,7 +19,7 @@ async function kafkaConnect() {
   try {
     await producer.connect();
   } catch (err) {
-    console.log("NÃO FOI POSSÍVEL CONECTAR AO KAFKA!");
+    console.log("NÃO FOI POSSÍVEL CONECTAR AO KAFKA!!");
   }
 }
 
