@@ -57,6 +57,10 @@ async function createTopicIfNotExists() {
 function main() {
   kafkaConnect();
   createTopicIfNotExists();
+
+  setInterval(() => {
+    sendMessage("mandei a mensagem");
+  }, 2000);
 }
 
 main();
