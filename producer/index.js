@@ -58,9 +58,9 @@ function main() {
   kafkaConnect();
   createTopicIfNotExists();
 
-  setInterval(() => {
-    sendMessage("mandei a mensagem");
-  }, 2000);
+  // setInterval(() => {
+  //   sendMessage("mandei a mensagem");
+  // }, 2000);
 }
 
 main();
