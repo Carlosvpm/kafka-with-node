@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start:all-devices":"nodemon producer/index.js nodemon consumer/index.js nodemon kafka-admin/index.js",
+    "start:all-devices": "nodemon producer/index.js nodemon consumer/index.js nodemon kafka-admin/index.js",
     "start:producer": "nodemon producer/index.js",
     "start:consumer": "nodemon consumer/index.js",
     "start:kafka-admin": "nodemon kafka-admin/index.js"
@@ -16,7 +16,8 @@
   "dependencies": {
     "body-parser": "^1.20.1",
     "express": "^4.18.2",
-    "kafkajs": "^2.2.2"
+    "kafkajs": "^2.2.2",
+    "mysql": "^2.18.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.20"
